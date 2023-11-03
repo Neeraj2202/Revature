@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Tasks</title>
+</head>
+<body>
+    <h1>JavaScript Tasks</h1>
+
+    <h2>Task 1: Print a Pattern</h2>
+    <p>Enter the number of rows for the pattern:</p>
+    <input type="text" id="patternRows">
+    <button onclick="printPattern()">Print Pattern</button>
+    <pre id="patternOutput"></pre>
+
+    <h2>Task 2: Calculate Factorial</h2>
+    <p>Enter a number to calculate its factorial:</p>
+    <input type="text" id="factorialNumber">
+    <button onclick="calculateFactorial()">Calculate Factorial</button>
+    <p id="factorialResult"></p>
+
+    <h2>Task 3: Simple Calculator</h2>
+    <p>Choose an operation (sum, minus, mul):</p>
+    <input type="text" id="calculatorOperation">
+    <p>Enter the first number:</p>
+    <input type="text" id="calculatorNum1">
+    <p>Enter the second number:</p>
+    <input type="text" id="calculatorNum2">
+    <button onclick="performOperation()">Perform Operation</button>
+    <p id="calculatorResult"></p>
+
+    <script>
+        // Task 1: Print Pattern
+        function printPattern() {
+            const rows = document.getElementById("patternRows").value;
+            const patternOutput = document.getElementById("patternOutput");
+            let pattern = '';
+            for (let i = 1; i <= rows; i++) {
+                pattern += '*'.repeat(i) + '\n';
+            }
+            patternOutput.innerText = pattern;
+        }
+
+        // Task 2: Calculate Factorial
+        function calculateFactorial() {
+            const number = document.getElementById("factorialNumber").value;
+            const factorialResult = document.getElementById("factorialResult");
+            const num = parseInt(number);
+            if (!isNaN(num)) {
+                let result = 1;
+                for (let i = 1; i <= num; i++) {
+                    result *= i;
+                }
+                factorialResult.innerText = `Factorial of ${num} is ${result}`;
+            } else {
+                factorialResult.innerText = "Invalid input. Please enter a valid number.";
+            }
+        }
+
+        // Task 3: Simple Calculator
+        function performOperation() {
+            const operation = document.getElementById("calculatorOperation").value;
+            const num1 = parseFloat(document.getElementById("calculatorNum1").value);
+            const num2 = parseFloat(document.getElementById("calculatorNum2").value);
+            const calculatorResult = document.getElementById("calculatorResult");
+            let result;
+
+            switch (operation) {
+                case "sum":
+                    result = num1 + num2;
+                    break;
+                case "minus":
+                    result = num1 - num2;
+                    break;
+                case "mul":
+                    result = num1 * num2;
+                    break;
+                default:
+                    result = "Invalid operation";
+            }
+
+            calculatorResult.innerText = `Result of ${operation} is: ${result}`;
+        }
+    </script>
+</body>
+</html>
